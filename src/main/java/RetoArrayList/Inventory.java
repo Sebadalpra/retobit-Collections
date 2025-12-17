@@ -1,26 +1,38 @@
 package RetoArrayList;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class Inventory {
     private final ArrayList<Item> items = new ArrayList<>();
 
     public void addItem(Item item) {
-        // Aquí tu código
+        this.items.add(item);
     }
 
     public boolean removeItem(String itemName) {
-        // Aquí tu código
-        return false;
+        for (Item item : items) {
+            if(item.getName().equals(itemName)) {
+                return this.items.remove(item);
+            }
+        }
+            return false;
     }
 
     public Item findItem(String itemName) {
-        // Aquí tu código
+        for(Item item : items) {
+            if (item.getName() == itemName) {
+                return item;
+            }
+        }
         return null;
     }
 
     public double getTotalWeight() {
-        // Aquí tu código
-        return 0.0; // sustituye esto por el valor real
+        double weight = 0;
+        for (Item item : items) {
+            weight += item.getWeight();
+        }
+        return weight;
     }
 
     // Este getter no es necesario modificarlo
